@@ -1,0 +1,65 @@
+
+<h2>Global Tasks</h2>
+<p-table [value]="tasks | async">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Task</th>
+            <th>Creator</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tasks>
+        <tr *ngIf="tasks.isGlobal">
+            <td>{{tasks.text}}</td>
+            <td>{{tasks.creator}}</td>
+            <td>{{tasks.isCompleted ? 'Completed' : 'Not Completed'}}</td>
+            <td>{{tasks.start}}</td>
+            <td>{{tasks.end}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+<h2>Personal Tasks</h2>
+<p-table [value]="tasks | async">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Task</th>
+            <th>Creator</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tasks>
+        <tr *ngIf="!tasks.isGlobal">
+            <td>{{tasks.text}}</td>
+            <td>{{tasks.creator}}</td>
+            <td>{{tasks.isCompleted ? 'Completed' : 'Not Completed'}}</td>
+            <td>{{tasks.start}}</td>
+            <td>{{tasks.end}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<h2>Team Leader Tasks</h2>
+<p-table [value]="tasks | async">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Task</th>
+            <th>Creator</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tasks>
+        <tr *ngIf="tasks.isLeader">
+            <td>{{tasks.text}}</td>
+            <td>{{tasks.creator}}</td>
+            <td>{{tasks.isCompleted ? 'Completed' : 'Not Completed'}}</td>
+            <td>{{tasks.start}}</td>
+            <td>{{tasks.end}}</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,0 +1,49 @@
+<p-dialog header="Add Task" [(visible)]="display" modal="modal" [responsive]="true" (onHide)='onClose()'>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="ui-fluid">
+    <div class="p-field p-grid">
+        <label for="firstname3" class="p-col-fixed" style="width:100px">Task Text</label>
+        <div class="p-col-12 p-md-10">
+            <input id="taskText" type="text" formControlName="taskText" pInputText> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="creator" class="p-col-fixed" style="width:100px">Creator</label>
+        <div class="p-col-12 p-md-10">
+            <input id="creator" type="text" formControlName="creator" pInputText> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="isGlobal" class="p-col-fixed" >Is Global</label>
+        <div class="p-col-12 p-md-10">
+            <p-checkbox id="isGlobal" name="isGlobal" value="true" formControlName="isGlobal"></p-checkbox> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="isLeader" class="p-col-fixed" >Is Created By Leader</label>
+        <div class="p-col-12 p-md-10">
+            <p-checkbox id="isLeader" name="isLeader" value="true" formControlName="isLeader"></p-checkbox> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="isCompleted" class="p-col-fixed" >Is Completed</label>
+        <div class="p-col-12 p-md-10">
+            <p-checkbox id="isLeader" name="isCompleted" value="true" formControlName="isCompleted"></p-checkbox> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="start" class="p-col-fixed">Start Date</label>
+        <div class="p-col-12 p-md-10">
+            <p-calendar formControlName="start" [style]="{'width':'70%'}" [inputStyle]="{'width':'70%'}" class="treetableDate" dateFormat="yy-mm-dd"></p-calendar> 
+        </div>
+    </div>
+    <div class="p-field p-grid">
+        <label for="end" class="p-col-fixed" >End Date</label>
+        <div class="p-col-12 p-md-10">
+            <p-calendar formControlName="end" [style]="{'width':'70%'}" [inputStyle]="{'width':'70%'}" class="treetableDate" dateFormat="yy-mm-dd"></p-calendar>
+        </div>
+    </div>
+    </div>
+    <button class="btn btn-default openBtn" pButton label="Add" type="submit" [disabled]="!form.valid"></button>
+</form>
+ </p-dialog>

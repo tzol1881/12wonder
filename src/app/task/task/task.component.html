@@ -1,0 +1,25 @@
+<h2>All Tasks</h2>
+<p-table #tt [value]="(tasks | async)" sortField="creator">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Task</th>
+            <th [pSortableColumn]="'creator'">Creator<p-sortIcon [field]="'creator'"></p-sortIcon></th>
+            <th>Personal<p-dropdown [options]="isPersonal" (onChange)="tt.filter($event.value, 'isGlobal', 'equals')"></p-dropdown></th>
+            <th>Leader<p-dropdown [options]="isLeader" (onChange)="tt.filter($event.value, 'isLeader', 'equals')"></p-dropdown></th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tasks>
+        <tr>
+            <td>{{tasks.text}}</td>
+            <td>{{tasks.creator}}</td>
+            <td>{{tasks.isGlobal ? 'Other' : 'Personal'}}</td>
+            <td>{{tasks.isLeader ? 'Leader' : 'Other'}}</td>
+            <td><input type='checkbox' [checked]='tasks.isCompleted' (click)='changeTaskStaus(tasks,$event)'></td>
+            <td>{{tasks.start}}</td>
+            <td>{{tasks.end}}</td>
+        </tr>
+    </ng-template>
+</p-table>
